@@ -6,12 +6,12 @@ const App = () => {
   const [user, setUser] = React.useState(null);
 
   const handleLogin = () =>
-  setUser({
-    id: '1',
-    name: 'robin',
-    permissions: ['analyze'],
-    roles: ['admin'],
-  });
+    setUser({
+      id: "1",
+      name: "robin",
+      permissions: ["analyze"],
+      roles: ["admin"],
+    });
 
   const handleLogout = () => setUser(null);
 
@@ -40,35 +40,26 @@ const App = () => {
           path="analytics"
           element={
             <ProtectedRoute
-              redirectPath="/home"
-              isAllowed={
-                !!user && user.permissions.includes('analyze')
-              }
+              redirectPath="/notauthorized"
+              isAllowed={!!user && user.permissions.includes("analyze")}
             >
               <Analytics />
             </ProtectedRoute>
           }
         />
 
-<Route
+        <Route
           path="admin"
           element={
             <ProtectedRoute
-              redirectPath="/home"
-              isAllowed={!!user && user.roles.includes('admin')}
+              redirectPath="/notauthorized"
+              isAllowed={!!user && user.roles.includes("admin")}
             >
               <Admin />
             </ProtectedRoute>
           }
         />
-
-
-
-
-
-        
-
-
+        <Route path="notauthorized" element={<p>Not authorized. Please sign in. </p>} />
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
     </>
@@ -116,11 +107,7 @@ const Admin = () => {
   );
 };
 
-const ProtectedRoute = ({
-  isAllowed,
-  redirectPath = '/landing',
-  children,
-}) => {
+const ProtectedRoute = ({ isAllowed, redirectPath = "/landing", children }) => {
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
@@ -128,8 +115,4 @@ const ProtectedRoute = ({
   return children ? children : <Outlet />;
 };
 
-
 export default App;
-
-
-
