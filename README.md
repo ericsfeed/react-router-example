@@ -14,6 +14,18 @@ This is built from a tutorial here: https://www.robinwieruch.de/react-router-pri
 https://react-router-example-liard.vercel.app/
 
 
+### How to convert repo to tailwind
+
+This script works fine: https://tailwindcss.com/docs/guides/create-react-app
+
+```
+npm install -D tailwindcss@latest postcss autoprefixer
+npx tailwindcss init -p
+npm install @headlessui/react @heroicons/react
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
