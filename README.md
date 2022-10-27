@@ -22,6 +22,7 @@ This script works fine: https://tailwindcss.com/docs/guides/create-react-app
 npm install -D tailwindcss@latest postcss autoprefixer
 npx tailwindcss init -p
 npm install @headlessui/react @heroicons/react
+```
 
 
 
